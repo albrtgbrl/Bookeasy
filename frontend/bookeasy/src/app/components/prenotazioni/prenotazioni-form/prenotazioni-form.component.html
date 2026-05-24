@@ -5,12 +5,17 @@
   <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
 
   <form [formGroup]="prenotazioneForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="col-6 mb-3">
-        <label class="form-label">ID Sala</label>
-        <input type="number" class="form-control" formControlName="idSala">
+    <div class="row mb-3"> <div class="col-6">
+        <label class="form-label">Sala</label>
+        <select class="form-select" formControlName="idSala">
+          <option [ngValue]="null" disabled selected>-- Scegli sala --</option>
+          <option *ngFor="let sala of sale" [ngValue]="sala.idSala">
+            {{ sala.nome }}
+          </option>
+        </select>
       </div>
-      <div class="col-6 mb-3">
+
+      <div class="col-6">
         <label class="form-label">ID Utente</label>
         <input type="number" class="form-control" formControlName="idUtente">
       </div>

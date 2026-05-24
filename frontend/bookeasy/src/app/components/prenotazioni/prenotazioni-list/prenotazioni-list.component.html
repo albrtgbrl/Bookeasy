@@ -1,0 +1,40 @@
+<div class="container my-4">
+  <h2 class="mb-4 text-secondary">Cerca Prenotazioni</h2>
+
+  <div class="input-group mb-4" style="max-width: 400px;">
+    <select class="form-select" [(ngModel)]="idSalaRicerca">
+      <option [ngValue]="undefined" disabled selected>-- Seleziona una sala --</option>
+      <option *ngFor="let sala of sale" [ngValue]="sala.idSala">
+        {{ sala.nome }}
+      </option>
+    </select>
+    <button class="btn btn-secondary" type="button" (click)="cercaPrenotazioni()">Cerca</button>
+  </div>
+
+  <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+
+  <div class="table-responsive" *ngIf="prenotazioni.length > 0">
+    <table class="table table-striped table-bordered align-middle">
+      <thead class="table-secondary">
+        <tr>
+          <th>ID</th>
+          <th>Data</th>
+          <th>Ora Inizio</th>
+          <th>Ora Fine</th>
+          <th>Azione</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of prenotazioni">
+          <td>{{ p.idPrenotazione }}</td>
+          <td>{{ p.data }}</td>
+          <td>{{ p.oraInizio }}</td>
+          <td>{{ p.oraFine }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="cancellaPrenotazione(p.idPrenotazione)">Elimina</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

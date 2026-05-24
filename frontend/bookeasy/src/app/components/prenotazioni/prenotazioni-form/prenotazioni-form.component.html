@@ -1,0 +1,37 @@
+<div class="container my-4" style="max-width: 450px;">
+  <h2 class="mb-4 text-success">Nuova Prenotazione</h2>
+
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <form [formGroup]="prenotazioneForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-6 mb-3">
+        <label class="form-label">ID Sala</label>
+        <input type="number" class="form-control" formControlName="idSala">
+      </div>
+      <div class="col-6 mb-3">
+        <label class="form-label">ID Utente</label>
+        <input type="number" class="form-control" formControlName="idUtente">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Data</label>
+      <input type="date" class="form-control" formControlName="data">
+    </div>
+
+    <div class="row">
+      <div class="col-6 mb-4">
+        <label class="form-label">Ora Inizio</label>
+        <input type="time" class="form-control" formControlName="orarioInizio">
+      </div>
+      <div class="col-6 mb-4">
+        <label class="form-label">Ora Fine</label>
+        <input type="time" class="form-control" formControlName="orarioFine">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100" [disabled]="prenotazioneForm.invalid">Prenota</button>
+  </form>
+</div>

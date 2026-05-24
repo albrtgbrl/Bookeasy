@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">📚 BookEasy Dashboard</a>
+  </div>
+</nav>
+
+<div class="container">
+  <ul class="nav nav-tabs mb-4">
+    <li class="nav-item">
+      <button class="nav-link" [class.active]="activeTab === 'sale-list'" (click)="setTab('sale-list')">
+        Lista Sale
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" [class.active]="activeTab === 'sala-form'" (click)="setTab('sala-form')">
+        Nuova Sala
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" [class.active]="activeTab === 'prenotazioni-list'" (click)="setTab('prenotazioni-list')">
+        Cerca Prenotazioni
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" [class.active]="activeTab === 'prenotazione-form'" (click)="setTab('prenotazione-form')">
+        Nuova Prenotazione
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content border p-4 bg-light rounded shadow-sm">
+    <div *ngIf="activeTab === 'sale-list'">
+      <app-sala-list></app-sala-list>
+    </div>
+
+    <div *ngIf="activeTab === 'sala-form'">
+      <app-sale-form></app-sale-form>
+    </div>
+
+    <div *ngIf="activeTab === 'prenotazioni-list'">
+      <app-prenotazioni-list></app-prenotazioni-list>
+    </div>
+
+    <div *ngIf="activeTab === 'prenotazione-form'">
+      <app-prenotazioni-form></app-prenotazioni-form>
+    </div>
+  </div>
+</div>

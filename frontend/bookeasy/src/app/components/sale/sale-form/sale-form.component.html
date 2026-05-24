@@ -1,0 +1,32 @@
+<div class="container my-4" style="max-width: 450px;">
+  <h2 class="mb-4 text-primary">Aggiungi Sala</h2>
+
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <form [formGroup]="salaForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Nome Sala</label>
+      <input type="text" class="form-control" formControlName="nome" placeholder="Es. Aula Master">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Capienza</label>
+      <input type="number" class="form-control" formControlName="capienza" placeholder="Posti disponibili">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Sede di Riferimento</label>
+      <select class="form-select" formControlName="idSede">
+        <option [ngValue]="null" disabled selected>-- Seleziona una sede --</option>
+
+        <option *ngFor="let sede of sedi" [ngValue]="sede.idSede">
+          {{ sede.nome }}
+        </option>
+
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="salaForm.invalid">Salva Sala</button>
+  </form>
+</div>

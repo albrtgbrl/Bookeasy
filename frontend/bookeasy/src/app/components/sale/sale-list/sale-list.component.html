@@ -1,0 +1,19 @@
+<div class="container my-4">
+  <h2 class="mb-4 text-primary">Sale Disponibili</h2>
+
+  <div class="row" *ngIf="sale.length > 0; else noSale">
+    <div class="col-md-4 mb-3" *ngFor="let s of sale">
+      <div class="card shadow-sm border-light">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">{{ s.nome }}</h5>
+          <p class="card-text mb-1">Capienza: <strong>{{ s.capienza }} posti</strong></p>
+          <p class="card-text text-muted" *ngIf="s.sede">Sede: {{ s.sede.nome }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noSale>
+    <div class="alert alert-warning">Nessuna sala disponibile al momento.</div>
+  </ng-template>
+</div>
